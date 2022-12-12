@@ -4,7 +4,10 @@
         v-bind:call_list="call_list"
         @SetPlay="SetPlay"
         @deleteCall="deleteCall"
-        @updateValue="updateValue"
+        @update_music_name="update_music_name"
+        @update_time_start="update_time_start"
+        @update_time_end="update_time_end"
+        @update_week_days="update_week_days"
         />
         <br>
         <AddLessonCall @Add-LessonCall="AddLessonCall"/>
@@ -20,24 +23,7 @@ import AddLessonCall from '@/components//Lesson/AddLessonCall.vue'
 export default {
   data () {
     return {
-      call_list: [
-        {
-          id: 0,
-          play: false,
-          music_name: 'Bonnie Tyler - Holding Out For a Hero.mp3',
-          week_days: ['1', '2', '3', '4', '5', '6'],
-          time_start: '08:00',
-          time_end: '08:40'
-        },
-        {
-          id: 1,
-          play: true,
-          music_name: 'The Mike Flowers Pops - Wonderwall.mp3',
-          week_days: ['3', '6'],
-          time_start: '13:30',
-          time_end: ''
-        }
-      ]
+      call_list: []
     }
   },
 
@@ -85,8 +71,23 @@ export default {
         })
     },
 
-    updateValue: function (id, value, newValue) {
-      this.call_list = this.call_list.map(t => t.id === id ? { ...t, value: t.newValue } : t)
+    update_music_name: function (id, newValue) {
+      this.call_list = this.call_list.map(t => t.id === id ? { ...t, music_name: newValue } : t)
+      console.log(this.call_list)
+    },
+
+    update_time_start: function (id, newValue) {
+      this.call_list = this.call_list.map(t => t.id === id ? { ...t, time_start: newValue } : t)
+      console.log(this.call_list)
+    },
+
+    update_time_end: function (id, newValue) {
+      this.call_list = this.call_list.map(t => t.id === id ? { ...t, time_end: newValue } : t)
+      console.log(this.call_list)
+    },
+
+    update_week_days: function (id, newValue) {
+      this.call_list = this.call_list.map(t => t.id === id ? { ...t, week_days: newValue } : t)
       console.log(this.call_list)
     },
 

@@ -6,7 +6,10 @@
       v-bind:index="i"
       v-on:SetPlay="SetPlay"
       v-on:deleteCall="deleteCall"
-      v-on:updateValue="updateValue"
+      v-on:update_music_name="update_music_name"
+      v-on:update_time_start="update_time_start"
+      v-on:update_time_end="update_time_end"
+      v-on:update_week_days="update_week_days"
       />
     </ul>
 </template>
@@ -25,8 +28,17 @@ export default {
     deleteCall (id) {
       this.$emit('deleteCall', id)
     },
-    updateValue (id, value, newValue) {
-      this.$emit('updateValue', id, value, newValue)
+    update_music_name (id, newValue) {
+      this.$emit('update_music_name', id, newValue)
+    },
+    update_time_start (id, newValue) {
+      this.$emit('update_time_start', id, newValue)
+    },
+    update_time_end (id, newValue) {
+      this.$emit('update_time_end', id, newValue)
+    },
+    update_week_days (id, newValue) {
+      this.$emit('update_week_days', id, newValue)
     }
   }
 }

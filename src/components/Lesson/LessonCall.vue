@@ -7,30 +7,29 @@
             </button>
             <div class="container">
                 <div class="content_item">
-                  <select class="selected_music_list" v-model="selected" @click="get_music_list">
+                  <select class="selected_music_list" v-model="selected" @input="$emit('update_music_name', call.id, selected)">
                     <option disabled value="">Please select one</option>
                     <option v-for="music of music_list" :key="music">{{music}}</option>
                   </select>
-                    <input type="time" name="" id="" v-model="time_start">
+                    <input type="time" name="" id="" v-model="time_start" @input="$emit('update_time_start', call.id, time_start)">
                     <h1>|</h1>
-                    <input type="time" name="" id="" v-model="time_end">
+                    <input type="time" name="" id="" v-model="time_end" @input="$emit('update_time_end', call.id, time_end)">
                 </div>
                 <div class="content_item">
-                    <input class="checkbox" type="checkbox" id="Monday" value="1" v-model="checkedNames">
+                    <input class="checkbox" type="checkbox" id="Monday" value="1" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="jack">Пн</label>
-                    <input class="checkbox"  type="checkbox" id="Tuesday" value="2" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Tuesday" value="2" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="john">Вт</label>
-                    <input class="checkbox"  type="checkbox" id="Wednesday" value="3" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Wednesday" value="3" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="mike">Ср</label>
-                    <input class="checkbox"  type="checkbox" id="Thursday" value="4" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Thursday" value="4" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="mike">Чт</label>
-                    <input class="checkbox"  type="checkbox" id="Friday" value="5" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Friday" value="5" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="mike">Пт</label>
-                    <input class="checkbox"  type="checkbox" id="Saturday" value="6" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Saturday" value="6" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="mike">Сб</label>
-                    <input class="checkbox"  type="checkbox" id="Sunday" value="0" v-model="checkedNames">
+                    <input class="checkbox"  type="checkbox" id="Sunday" value="0" v-model="checked_week_days" @change="$emit('update_week_days', call.id, checked_week_days)">
                     <label for="mike">Вс</label>
-                    <!-- @click="$emit('updateValue', call.id, call.time_start, time_start)" -->
                 </div>
             </div>
             <button class="btn_ok" @click="$emit('deleteCall', call.id)">
@@ -58,7 +57,7 @@ export default {
       selected: this.call.music_name,
       time_start: this.call.time_start,
       time_end: this.call.time_end,
-      checkedNames: this.call.week_days,
+      checked_week_days: this.call.week_days,
       music_list: []
     }
   },
