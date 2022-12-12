@@ -15,6 +15,12 @@
   color: #2c3e50;
 }
 
+body {
+  background: #181730;
+  margin: 0;
+  padding: 0;
+}
+
 nav {
   padding: 30px;
 }
@@ -25,6 +31,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2896ea;
 }
 </style>
