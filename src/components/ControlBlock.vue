@@ -36,8 +36,11 @@ export default {
     axios.get('/ListLessonCall')
       .then((response) => {
         console.log(response.data)
-        this.call_list = response.data
-        // this.call_list.push(response.data)
+        if (response.data == null) {
+          this.call_list = []
+        } else {
+          this.call_list = response.data
+        }
       })
       .catch(function (error) {
         console.log(error)
@@ -74,25 +77,62 @@ export default {
     update_music_name: function (id, newValue) {
       this.call_list = this.call_list.map(t => t.id === id ? { ...t, music_name: newValue } : t)
       console.log(this.call_list)
+      axios.post('/set_calls', {
+        call_list: this.call_list
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
 
     update_time_start: function (id, newValue) {
       this.call_list = this.call_list.map(t => t.id === id ? { ...t, time_start: newValue } : t)
       console.log(this.call_list)
+      axios.post('/set_calls', {
+        call_list: this.call_list
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
 
     update_time_end: function (id, newValue) {
       this.call_list = this.call_list.map(t => t.id === id ? { ...t, time_end: newValue } : t)
       console.log(this.call_list)
+      axios.post('/set_calls', {
+        call_list: this.call_list
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
 
     update_week_days: function (id, newValue) {
       this.call_list = this.call_list.map(t => t.id === id ? { ...t, week_days: newValue } : t)
       console.log(this.call_list)
+      axios.post('/set_calls', {
+        call_list: this.call_list
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
 
     deleteCall: function (id) {
       this.call_list = this.call_list.filter(t => t.id !== id)
+      console.log(this.call_list)
       axios.post('/set_calls', {
         call_list: this.call_list
       })

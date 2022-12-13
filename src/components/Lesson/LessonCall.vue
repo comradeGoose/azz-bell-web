@@ -7,7 +7,7 @@
             </button>
             <div class="container">
                 <div class="content_item">
-                  <select class="selected_music_list" v-model="selected" @input="$emit('update_music_name', call.id, selected)">
+                  <select class="selected_music_list" v-model="selected" @change="$emit('update_music_name', call.id, selected)">
                     <option disabled value="">Please select one</option>
                     <option v-for="music of music_list" :key="music">{{music}}</option>
                   </select>
@@ -58,7 +58,10 @@ export default {
       time_start: this.call.time_start,
       time_end: this.call.time_end,
       checked_week_days: this.call.week_days,
-      music_list: []
+      music_list: [
+        '123',
+        '456'
+      ]
     }
   },
   mounted () {
